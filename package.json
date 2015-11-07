@@ -1,0 +1,27 @@
+{
+  "name": "project4",
+  "version": "1.0.0",
+  "description": "udacity project 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpburgess/optimization-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpburgess/optimization-project/issues"
+  },
+  "homepage": "https://github.com/dpburgess/optimization-project#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-cache": "^0.3.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-inline-css": "^3.0.0",
+    "gulp-uglify": "^1.4.1",
+    "gulp-useref": "^1.3.0"
+  }
+}
