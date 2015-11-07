@@ -451,12 +451,14 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   //moved variables i, dx, and newwidth out of the loop since they did not need to be calculated each loop
   function changePizzaSizes(size) {
-      var i = 0
-      var dx = determineDx(document.querySelectorAll("div.randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll("div.randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      var i = 0;
+      var allPizzaContainers = document.getElementsByClassName("randomPizzaContainer");
+      var len = allPizzaContainers.length;
+      var dx = determineDx(allPizzaContainers[i], size);
+      var newwidth = (allPizzaContainers[i].offsetWidth + dx) + 'px';
 
-    for (; i < document.querySelectorAll("div.randomPizzaContainer").length; i++) {
-      document.querySelectorAll("div.randomPizzaContainer")[i].style.width = newwidth;
+    for (; i < len; i++) {
+      allPizzaContainers[i].style.width = newwidth;
     }
   }
 
@@ -472,11 +474,13 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-// Decreased the number of pizzas in total from 100 to 10.  This saved a lot of time.
+// Decreased the number of pizzas in total from 100 to 30.  This saved a lot of time.
+var pizzasDiv = document.getElementById("randomPizzas");
+var docFragment = document.createDocumentFragment();
 for (var i = 2; i < 30; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
-  pizzasDiv.appendChild(pizzaElementGenerator(i));
+  docFragment.appendChild(pizzaElementGenerator(i));
 }
+pizzasDiv.appendChild(docFragment);
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
 window.performance.mark("mark_end_generating");
@@ -507,8 +511,10 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 //getElementsByClassName is a faster way to query elements compared to querySelectAll
   var items = document.getElementsByClassName('mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+  var itemLength = items.length;
+  var scrollPosition = document.body.scrollTop;
+  for (var i = 0; i < itemLength; i++) {
+    var phase = Math.sin((scrollPosition / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
