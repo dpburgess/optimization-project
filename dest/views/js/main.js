@@ -534,8 +534,8 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  //changed 200 to 24 since we only need the pizzas the user is looking at to show instead of wasting load events
-  //on pizzas the user won't see immediately
+  /*changed 200 to 24 since we only need the pizzas the user is looking at to show
+  instead of wasting load events on pizzas the user won't see immediately*/
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
