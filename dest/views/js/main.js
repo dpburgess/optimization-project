@@ -473,10 +473,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-// Decreased the number of pizzas in total from 100 to 30.  This saved a lot of time.
 var pizzasDiv = document.getElementById("randomPizzas");
 var docFragment = document.createDocumentFragment();
-for (var i = 2; i < 30; i++) {
+for (var i = 2; i < 100; i++) {
   docFragment.appendChild(pizzaElementGenerator(i));
 }
 pizzasDiv.appendChild(docFragment);
@@ -509,6 +508,8 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 //getElementsByClassName is a faster way to query elements compared to querySelectAll
+//moved variables outside of the loop to save time so they aren't declared during every loop
+//as well as declaring variables to the DOM lookup happens once rather than during each loop
   var items = document.getElementsByClassName('mover');
   var itemLength = items.length;
   var scrollPosition = document.body.scrollTop;
@@ -536,8 +537,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   /*changed 200 to 24 since we only need the pizzas the user is looking at to show
   instead of wasting load events on pizzas the user won't see immediately*/
-  for (var i = 0; i < 24; i++) {
-    var elem = document.createElement('img');
+  //declaring elem outside of the loop prevents it from being declared every time the loop runs
+  var elem = document.createElement('img');
+  for (var i = 0; i < 40; i++) {
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
