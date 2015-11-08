@@ -1,3 +1,7 @@
+
+***The finalized and optimized files are in the 'dest' folder.***
+
+
 This is for the Udacity Optimization project.  The finalized and optimized files are in the 'dest' folder.
 
 Open index.html to view the website optimizations and observe a Google Pagespeed score over 90.
