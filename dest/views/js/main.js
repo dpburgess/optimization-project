@@ -456,7 +456,6 @@ var resizePizzas = function(size) {
       var len = allPizzaContainers.length;
       var dx = determineDx(allPizzaContainers[i], size);
       var newwidth = (allPizzaContainers[i].offsetWidth + dx) + 'px';
-
     for (; i < len; i++) {
       allPizzaContainers[i].style.width = newwidth;
     }
