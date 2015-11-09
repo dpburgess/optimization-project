@@ -538,8 +538,9 @@ document.addEventListener('DOMContentLoaded', function() {
   /*changed 200 to 24 since we only need the pizzas the user is looking at to show
   instead of wasting load events on pizzas the user won't see immediately*/
   //declaring elem outside of the loop prevents it from being declared every time the loop runs
-  var elem = document.createElement('img');
+  var elem;
   for (var i = 0; i < 40; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
